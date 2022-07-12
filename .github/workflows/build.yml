@@ -8,8 +8,8 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build
       uses: docker/build-push-action@v1
-      with:
-        push: false
+      # with:
+      #   push: false
 
 
     - name: Login to Amazon ECR Public
@@ -20,6 +20,10 @@ jobs:
 
     - name: Build, tag, and push docker image to Amazon ECR Public
       env:
+        access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        # region: us-east-1
+        AWS_REGION: us-east-1
         REGISTRY: ${{ steps.login-ecr-public.outputs.registry }}
         REGISTRY_ALIAS: my-ecr-public-registry-alias
         REPOSITORY: public.ecr.aws/m6s4o1d2/test-repo

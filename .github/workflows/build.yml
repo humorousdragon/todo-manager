@@ -18,8 +18,8 @@ jobs:
         access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         region: us-east-1
-        REGISTRY: ${{ steps.login-ecr-public.outputs.registry }}
-        REGISTRY_ALIAS: my-ecr-public-registry-alias
+        # REGISTRY: ${{ steps.login-ecr-public.outputs.registry }}
+        # REGISTRY_ALIAS: my-ecr-public-registry-alias
         REPOSITORY: public.ecr.aws/m6s4o1d2/test-repo
         IMAGE_TAG: ${{ github.sha }}
       run: |

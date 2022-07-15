@@ -21,7 +21,7 @@ jobs:
       env: 
         REGISTRY: ${{ steps.login-ecr-public.outputs.registry }}
         REGISTRY_ALIAS: my-ecr-public-registry-alias
-        REPOSITORY: public.ecr.aws/m6s4o1d2/test-repo
+        REPOSITORY: test-repo
         IMAGE_TAG: ${{ github.sha }}
     - name: Push
       run: |

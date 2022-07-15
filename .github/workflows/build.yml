@@ -17,13 +17,11 @@ jobs:
         aws-region: us-east-1
 
     - name: Build and Push
-      uses: aws-actions/amazon-ecr-login@v1
       env: 
         REGISTRY: ${{ steps.login-ecr-public.outputs.registry }}
         REGISTRY_ALIAS: my-ecr-public-registry-alias
         REPOSITORY: test-repo
         IMAGE_TAG: ${{ github.sha }}
-    - name: Push
       run: |
         docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
         docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG

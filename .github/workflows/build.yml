@@ -23,6 +23,7 @@ jobs:
         REGISTRY_ALIAS: my-ecr-public-registry-alias
         REPOSITORY: public.ecr.aws/m6s4o1d2/test-repo
         IMAGE_TAG: ${{ github.sha }}
+    - name: Push
       run: |
         docker build -t $REGISTRY/$REGISTRY_ALIAS/$REPOSITORY:$IMAGE_TAG .
         # docker tag my-image ${{ steps.ecr.outputs.account }}.dkr.ecr.us-east-1.amazonaws.com/my-image:v1

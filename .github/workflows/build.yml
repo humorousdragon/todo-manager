@@ -18,7 +18,7 @@ jobs:
         secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         region: us-east-1
     - name: Push to ECR
-      run: |
+      with:
         REGISTRY: ${{ steps.login-ecr-public.outputs.registry }}
         REGISTRY_ALIAS: my-ecr-public-registry-alias
         REPOSITORY: public.ecr.aws/m6s4o1d2/test-repo

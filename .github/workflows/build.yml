@@ -5,7 +5,7 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-    - name: CHeckout
+    - name: Checkout
       uses: actions/checkout@v2
 
     - name: AWS credentials
@@ -15,6 +15,7 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1
+
     - name: Login to Amazon ECR
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
@@ -29,4 +30,5 @@ jobs:
         # # docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
       run: |
         docker build -t test-repo .
+        docker tag test-repo:latest public.ecr.aws/m6s4o1d2/test-repo:latest
         docker push public.ecr.aws/m6s4o1d2/test-repo:latest

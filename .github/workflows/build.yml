@@ -22,6 +22,8 @@ jobs:
 
     - name: Build and Push
       # env: 
+
+      
       #   ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
       #   ECR_REPOSITORY: test-repo
       #   IMAGE_TAG: ${{ github.sha }}

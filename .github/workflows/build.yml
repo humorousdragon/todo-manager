@@ -24,8 +24,9 @@ jobs:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: test-repo
         IMAGE_TAG: ${{ github.sha }}
+        # docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+        # docker push public.ecr.aws/m6s4o1d2/test-repo:latest
+        # # docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
       run: |
-        echo $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+        docker build -t test-repo .
         docker push public.ecr.aws/m6s4o1d2/test-repo:latest
-        # docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG

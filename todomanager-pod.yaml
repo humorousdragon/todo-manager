@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  # creationTimestamp: null
+  labels:
+    app: todomanager
+  name: todomanager
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: todomanager
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: todomanager
+    spec:
+      containers:
+      - image: public.ecr.aws/m6s4o1d2/test-repo
+        name: nginx
+        ports:
+        - containerPort: 80
+        resources: {}
+status: {}
